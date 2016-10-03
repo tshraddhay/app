@@ -1,0 +1,39 @@
+<!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/health-tech-banner.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>Healthcare Blog</h1>
+                        <hr class="small">
+                        <span class="subheading">Welcome to Government Healthcare Blog</span>
+                    <div class="btn-group" style="margin:20px 0 0 0">
+                        <label class="btn btn-primary" ng-model="checkModel" uib-btn-radio="'english'">English</label>
+                        <label class="btn btn-primary" ng-model="checkModel" uib-btn-radio="'spanish'">Spanish</label>
+                        <label class="btn btn-primary" ng-model="checkModel" uib-btn-radio="'both'">Both</label>
+                    </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </header>
+
+<!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-preview" ng-repeat="blog in blogs.slice(((bigCurrentPage-1)*itemsPerPage), ((bigCurrentPage)*itemsPerPage))">
+                    <a ng-href="https://www.healthcare.gov/{{blog.url}}" target="_blank">
+                        <h2 class="post-title" >{{blog.title}}</h2>
+                        <h3 class="post-subtitle" ng-bind-html="trustAsHtml(blog.excerpt)"></h3>
+                    </a>
+                    <p class="post-meta">Categories <a href="#" ng-repeat="category in blog.categories">{{category}}</a> on {{blog.date | date:'yyyy-MM-dd'}}</p>
+                </div>
+                <hr>
+                <ul uib-pagination total-items="bigTotalItems" items-per-page='itemsPerPage' ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false"></ul>
+            </div>
+        </div>
+    </div>
+

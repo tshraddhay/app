@@ -1,0 +1,39 @@
+<!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/banner-glossary.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>Glossary</h1>
+                        <hr class="small">
+                        <!--<span class="subheading">Welcome to Government Healthcare Blog</span>-->
+                      <div class="btn-group" style="margin:20px 0 0 0">
+                          <label class="btn btn-primary" ng-model="checkModel" uib-btn-radio="'english'">English</label>
+                          <label class="btn btn-primary" ng-model="checkModel" uib-btn-radio="'spanish'">Spanish</label>
+                          <label class="btn btn-primary" ng-model="checkModel" uib-btn-radio="'both'">Both</label>
+                      </div>
+                      <div class="form-group">
+                        <input type="text" placeholder="Search" ng-model="searchTitle" class="form-control" style="border-radius:0px;margin:20px 0 0 0;height:48px;">
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+<!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-preview" ng-repeat="glossary in glossaries | filter:searchTitle">
+                    <a ng-href="https://www.healthcare.gov{{glossary.url}}" target="_blank">
+                        <h2 class="post-title" >{{glossary.title}}</h2>
+                        <h3 class="post-subtitle" ng-bind-html="trustAsHtml(glossary.excerpt)"></h3>
+                    </a>
+                    <p class="post-meta">Tags <a href="#" ng-repeat="tag in glossary.tags">{{tag}}</a></p>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
